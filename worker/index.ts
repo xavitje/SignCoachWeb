@@ -61,7 +61,7 @@ async function status(env: Env): Promise<Response> {
       body: JSON.stringify({ p_kind: 'test', p_name: 'status', p_email: 'status@example.com', p_role: null, p_school: null, p_classes: null, p_grade: null, p_message: null }),
     });
     const body = await res.text();
-    result.supabase = { status: res.status, ok: res.status === 400 && body.includes('website_requests_kind_check'), message: body.slice(0, 200) };
+    result.supabase = res.status === 400 && body.includes('website_requests_kind_check');
   }
   return new Response(JSON.stringify(result, null, 2), {
     headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' },
