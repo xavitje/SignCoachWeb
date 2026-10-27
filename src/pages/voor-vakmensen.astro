@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import RequestForm from '../components/RequestForm.astro';
+---
+<Base
+  title="Voor vakmensen · SignCoach"
+  description="Ben je gebarentaaldocent, tolk NGT of dove gebaarder? Neem gebaren op voor SignCoach en controleer die van anderen."
+>
+  <PageIntro title="Neem gebaren op voor SignCoach" lead="Elk voorbeeld in SignCoach komt van een gebarentaalvakman. We zoeken gebarentaaldocenten, tolken NGT en dove en slechthorende gebaarders die gebaren willen opnemen en controleren." />
+
+  <section class="section field-raised">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Zo werkt het</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>Je neemt een gebaar op in de app,</strong> met de camera van een Android-telefoon of -tablet. Het gaat naar een wachtrij.</li>
+        <li><strong>Een tweede vakman bekijkt het.</strong> Die keurt het goed of stuurt het terug met een opmerking. Je keurt nooit je eigen opname.</li>
+        <li><strong>Pas na goedkeuring</strong> zien leerlingen het gebaar als voorbeeld in hun les.</li>
+        <li>Je kunt ook de opnames van andere vakmensen controleren.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Meld je aan</h2>
+        <p class="lead">Laat je gegevens achter, dan nemen we contact op en zetten we je account klaar.</p>
+        <p>Vakmensen hebben geen toegang tot gegevens van leerlingen.</p>
+      </div>
+      <div class="panel field-surface">
+        <RequestForm kind="vakman" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .steps { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 16px; font-size: 17px; }
+</style>

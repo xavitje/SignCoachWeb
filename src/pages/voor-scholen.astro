@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+
+const prices = [
+  { name: 'Klein', size: 'Tot 150 leerlingen', price: '€295' },
+  { name: 'Standaard', size: '150 tot 350 leerlingen', price: '€495' },
+  { name: 'Groot', size: 'Meer dan 350 leerlingen', price: '€695' },
+];
+const faq = [
+  { q: 'Hoeveel tijd kost het de docent?', a: 'Een klas klaarzetten kost eenmalig ongeveer tien minuten. Daarna oefenen leerlingen 15 minuten per week; de docent hoeft er niet steeds naast te staan. In het tabblad Klas zie je wie heeft geoefend.' },
+  { q: 'Werkt het zonder camera?', a: 'Ja. De docent kan de camera per leerling uitzetten. Die leerling kijkt dan naar het voorbeeld en geeft zelf aan of het gelukt is.' },
+  { q: 'Hebben leerlingen een e-mailadres nodig?', a: 'Nee. Leerlingen loggen in met een klascode en een pincode van vier cijfers. De docent ziet de pincodes en kan inlogkaartjes printen.' },
+  { q: 'Wat gebeurt er als de licentie afloopt?', a: 'Leerlingen kunnen dan niet meer oefenen. Uiterlijk 90 dagen na het einde van de licentie worden de gegevens van leerlingen automatisch gewist.' },
+  { q: 'Op welke apparaten werkt het?', a: 'Op Android-tablets en -telefoons met een camera. De iPad komt erbij zodra de iOS-versie klaar is.' },
+];
+---
+<Base
+  title="Voor scholen · SignCoach"
+  description="Wat leerlingen leren met SignCoach, hoe het in de school werkt en wat het kost: één vaste prijs per schooljaar, vanaf €295."
+  current="scholen"
+>
+  <PageIntro title="Alles om te beslissen" lead="Wat leerlingen leren, hoe SignCoach in de school werkt en wat het kost. Twijfel je nog, probeer het dan eerst 6 tot 8 weken gratis met één of twee klassen.">
+    <p><a class="btn btn-primary" href="/pilot-aanvragen/">Pilot aanvragen</a></p>
+  </PageIntro>
+
+  <section class="section field-raised">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Wat leerlingen leren</h2>
+        <p class="lead">Leerlingen beginnen met het vingeralfabet van de Nederlandse Gebarentaal: 26 handvormen. Daarna volgen cijfers en basiswoorden.</p>
+      </div>
+      <ul class="checks">
+        <li><span class="dot" aria-hidden="true"></span><span><strong>Bij elk gebaar een voorbeeldvideo,</strong> opgenomen door een gebarentaalvakman en gecontroleerd door een tweede.</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><strong>De camera kijkt mee</strong> en ziet of de handvorm klopt. Drie keer goed, dan gaat de volgende les open.</span></li>
+        <li><span class="dot" aria-hidden="true"></span><span><strong>Kleine stappen:</strong> elke les is één gebaar, en een leerling ziet op het leerpad wat al gehaald is.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Hoe het in de school werkt</h2>
+        <p class="lead">De school koopt één licentie per schooljaar. Daarmee kunnen alle docenten van de school klassen aanmaken.</p>
+      </div>
+      <ul class="plain-list">
+        <li>Docenten loggen in met hun eigen account en zien alleen hun eigen klassen.</li>
+        <li>Leerlingen hebben geen e-mailadres nodig. Van leerlingen bewaren we alleen voornaam, klas en voortgang.</li>
+        <li>Op een gedeelde tablet logt een leerling na 10 minuten op de achtergrond vanzelf uit.</li>
+        <li>De docent ziet per week hoeveel leerlingen geoefend hebben en welke letters gehaald zijn.</li>
+        <li>Lees op de pagina <a href="/privacy/">Privacy</a> wat we bewaren en vind daar de verwerkersovereenkomst.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section field-surface">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Waarom gebarentaal</h2>
+      </div>
+      <div class="stack lead">
+        <p>Gebarentaal leren is leren hoe een andere groep mensen communiceert. Het past bij burgerschap en bij inclusie in de klas.</p>
+        <p>Zit er een dove of slechthorende leerling in de klas, of heeft een leerling dove familie, dan kunnen klasgenoten met een paar gebaren al meer met elkaar praten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="prijs" class="section field-gold">
+    <div class="wrap stack-lg" style="gap: 40px;">
+      <div class="stack measure">
+        <h2 class="display-lg">Eén prijs per schooljaar</h2>
+        <p class="lead">Je betaalt per school, niet per leerling of per docent. Op factuur.</p>
+      </div>
+      <ul class="three prices">
+        {prices.map((p) => (
+          <li class="price panel">
+            <h3 class="heading">{p.name}</h3>
+            <p class="muted">{p.size}</p>
+            <p class="amount">{p.price}</p>
+            <p class="caption">per schooljaar</p>
+          </li>
+        ))}
+      </ul>
+      <ul class="discounts">
+        <li>15% korting als je voor drie schooljaren kiest.</li>
+        <li>20% korting voor schoolbesturen.</li>
+        <li>De eerste 20 scholen krijgen het eerste jaar 50% korting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap stack-lg">
+    <h2 class="display-lg">Veelgestelde vragen</h2>
+    <div class="faq">
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+    <div class="cta panel field-surface">
+      <p class="heading">Probeer het 6 tot 8 weken gratis met één of twee klassen.</p>
+      <a class="btn btn-primary" href="/pilot-aanvragen/">Pilot aanvragen</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .checks .dot { flex-shrink: 0; width: 14px; height: 14px; margin-top: 7px; border-radius: 999px; background: var(--clover); }
+  .plain-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
+  .prices { list-style: none; margin: 0; padding: 0; }
+  .price { background: var(--ground); display: flex; flex-direction: column; gap: 8px; }
+  .amount { font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1.1; margin-top: 12px; }
+  .discounts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; font-size: 17px; }
+  .faq { display: flex; flex-direction: column; gap: 8px; max-width: 48rem; }
+  details { background: var(--surface); border-radius: var(--radius-lg); padding: 0 20px; }
+  summary { cursor: pointer; font-weight: 700; font-size: 17px; min-height: 56px; display: flex; align-items: center; list-style-position: inside; }
+  details[open] summary { margin-bottom: 4px; }
+  details p { padding-bottom: 18px; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+</style>

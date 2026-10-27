@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+<Base
+  title="Voor docenten · SignCoach"
+  description="Zo zet je je klas klaar in SignCoach, zo ziet een les van 15 minuten eruit, en zo werkt de herkenning het best."
+  current="docenten"
+>
+  <PageIntro title="Klaar in tien minuten" lead="Voor de docent die SignCoach gaat gebruiken, of die de directie wil overtuigen. Je klas klaarzetten doe je één keer; daarna oefenen leerlingen 15 minuten per week." />
+
+  <section class="section field-raised">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Je klas klaarzetten</h2>
+        <p class="lead">Eenmalig, ongeveer tien minuten.</p>
+      </div>
+      <ol class="steps">
+        <li><strong>Maak een klas aan.</strong> Je krijgt een klascode die bij jouw klas hoort.</li>
+        <li><strong>Zet de voornamen van je leerlingen erin.</strong> Een bijnaam mag ook. Elke leerling krijgt een pincode van vier cijfers.</li>
+        <li><strong>Print de inlogkaartjes</strong> vanuit de app en deel ze uit. Op elk kaartje staan de naam, de klascode en de pincode.</li>
+        <li><strong>Leerlingen loggen in</strong> met klascode en pincode. Een e-mailadres is niet nodig. Vergeet iemand de pincode, dan zoek je die op in het tabblad Klas.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Een les van 15 minuten</h2>
+        <p class="lead">Een voorbeeld. Je kunt het ook als vaste oefentijd inplannen, zelfstandig of in groepjes.</p>
+      </div>
+      <ol class="timeline">
+        <li><span class="mins">2 min</span><span>Laat het voorbeeld van de nieuwe letter samen zien, bijvoorbeeld op het digibord, en doe het gebaar met de klas na.</span></li>
+        <li><span class="mins">10 min</span><span>Leerlingen oefenen op de tablet. De camera kijkt mee; drie keer goed, dan is de les gehaald.</span></li>
+        <li><span class="mins">3 min</span><span>Spel samen een woord of een naam met de letters die de klas al kent.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section field-gold">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Tips voor goede herkenning</h2>
+        <p class="lead">De herkenning werkt op de tablet zelf. Zo gaat het het best:</p>
+      </div>
+      <ul class="tips">
+        <li><strong>Goed licht</strong> van voren, niet met een raam achter de leerling.</li>
+        <li><strong>De hele hand in beeld,</strong> met wat ruimte eromheen.</li>
+        <li><strong>Een rustige achtergrond</strong> achter de hand.</li>
+        <li><strong>Houd het gebaar even stil.</strong> Lukt het niet, laat dan de hand even zakken en doe het nog een keer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Wat je ziet als docent</h2>
+      </div>
+      <ul class="plain-list">
+        <li>Per leerling welke letters gehaald zijn en wanneer er geoefend is.</li>
+        <li>Per week hoeveel leerlingen van je klas geoefend hebben.</li>
+        <li>De pincodes van je leerlingen, en een knop om inlogkaartjes te printen.</li>
+        <li>Per leerling een schakelaar voor de camera. Staat de camera uit, dan oefent de leerling met een zelfcheck.</li>
+        <li>Een feedbackformulier, zodat je ons kunt laten weten wat beter kan.</li>
+      </ul>
+    </div>
+    <div class="cta panel field-surface">
+      <p class="heading">Wil je het met je klas proberen?</p>
+      <a class="btn btn-primary" href="/pilot-aanvragen/">Pilot aanvragen</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .steps { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 16px; font-size: 17px; }
+  .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; font-size: 17px; }
+  .timeline li { display: flex; gap: 16px; align-items: baseline; }
+  .mins {
+    flex-shrink: 0; min-width: 72px; text-align: center; padding: 4px 12px; border-radius: 999px;
+    background: var(--surface-raised); font-weight: 700; font-size: 15px;
+  }
+  .tips, .plain-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
+  .cta { margin-top: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+</style>

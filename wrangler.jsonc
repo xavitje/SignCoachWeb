@@ -1,12 +1,21 @@
-// Cloudflare Workers: publiceert de gebouwde site (dist/) als statische bestanden.
+// Cloudflare Worker: de statische site (dist/) plus worker/index.ts voor /api/*.
 // Build command: npm run build · Deploy command: npx wrangler deploy · Root directory: leeg laten.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "signcoachweb",
+  "main": "worker/index.ts",
   "compatibility_date": "2025-09-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
-  }
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "SUPABASE_URL": "https://zjedxlvdeedpkbxzqkpo.supabase.co"
+  },
+  // Variabelen die je in het Cloudflare-dashboard zet (sleutels, NOTIFY_EMAIL) blijven bewaard bij elke deploy.
+  "keep_vars": true,
+  "observability": { "enabled": true }
 }

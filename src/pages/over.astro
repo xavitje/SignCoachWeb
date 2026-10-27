@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import RequestForm from '../components/RequestForm.astro';
+---
+<Base
+  title="Over SignCoach"
+  description="SignCoach is een app waarmee leerlingen Nederlandse Gebarentaal leren, gemaakt met gebarentaalvakmensen. Zo komen de gebaren tot stand en zo gaan we met gegevens om."
+  current="over"
+>
+  <PageIntro title="Over SignCoach" lead="SignCoach is een app waarmee leerlingen van 9 tot 15 jaar Nederlandse Gebarentaal (NGT) leren, in de klas, met een camera die meekijkt." />
+
+  <section class="section field-raised">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Hoe de gebaren tot stand komen</h2>
+      </div>
+      <div class="stack lead">
+        <p>Elk voorbeeld in de app is opgenomen door een gebarentaalvakman: een gebarentaaldocent, tolk of dove gebaarder. Een tweede vakman controleert het voordat leerlingen het zien.</p>
+        <p>Ben je zelf vakman? <a href="/voor-vakmensen/">Lees hoe je kunt meedoen</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Waar we op letten</h2>
+      </div>
+      <ul class="plain-list">
+        <li><strong>Privacy:</strong> camerabeelden blijven op het apparaat, en van leerlingen bewaren we alleen voornaam, klas en voortgang. <a href="/privacy/">Lees meer</a>.</li>
+        <li><strong>Geen reclame en geen ranglijst:</strong> voortgang ziet alleen de leerling zelf en de docent.</li>
+        <li><strong>Servers in de EU,</strong> in Frankfurt.</li>
+        <li><strong>Toegankelijk:</strong> de site volgt de richtlijnen voor toegankelijkheid (WCAG 2.2 AA).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section field-surface">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack">
+        <h2 class="display-lg">Een vraag?</h2>
+        <p class="lead">Stel je vraag hier, dan krijg je binnen twee werkdagen antwoord.</p>
+      </div>
+      <div class="panel" style="background: var(--ground);">
+        <RequestForm kind="vraag" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .plain-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
+</style>

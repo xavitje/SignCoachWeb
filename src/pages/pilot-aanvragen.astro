@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import RequestForm from '../components/RequestForm.astro';
+---
+<Base
+  title="Pilot aanvragen · SignCoach"
+  description="Probeer SignCoach 6 tot 8 weken gratis met één of twee klassen. Vraag de pilot aan; binnen twee werkdagen nemen we contact op."
+>
+  <section class="wrap page">
+    <div class="split" style="align-items: start;">
+      <div class="stack-lg">
+        <h1 class="display-xl">Probeer het gratis</h1>
+        <p class="lead">Gebruik SignCoach 6 tot 8 weken gratis in één of twee klassen. Daarna beslis je of de school verdergaat.</p>
+        <div class="stack" style="gap: 8px;">
+          <h2 class="heading">Wat je krijgt</h2>
+          <ul class="plain">
+            <li>De app voor jouw klassen, met alle lessen van het vingeralfabet.</li>
+            <li>De docentenhandleiding.</li>
+          </ul>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <h2 class="heading">Wat we vragen</h2>
+          <p>Korte feedback tijdens en na de pilot, via het formulier in de app.</p>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <h2 class="heading">Wat er daarna gebeurt</h2>
+          <p>Binnen twee werkdagen nemen we contact op om de pilot te plannen.</p>
+        </div>
+      </div>
+      <div class="panel field-surface">
+        <RequestForm kind="pilot" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { padding-top: clamp(32px, 5vw, 72px); padding-bottom: clamp(48px, 7vw, 96px); }
+  .plain { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+</style>

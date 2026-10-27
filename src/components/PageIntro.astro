@@ -1,0 +1,15 @@
+---
+// Kop van een binnenpagina: grote titel en een inleiding.
+interface Props { title: string; lead: string }
+const { title, lead } = Astro.props;
+---
+<section class="wrap intro stack-lg">
+  <h1 class="display-xl">{title}</h1>
+  <p class="lead measure">{lead}</p>
+  <slot />
+</section>
+
+<style>
+  .intro { padding-top: clamp(32px, 5vw, 72px); padding-bottom: clamp(40px, 6vw, 72px); }
+  h1 { max-width: 13em; }
+</style>

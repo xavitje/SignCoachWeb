@@ -1,0 +1,83 @@
+---
+// Aanvraagformulier. Verstuurt naar /api/aanvraag (worker/index.ts), werkt zonder JavaScript.
+interface Props { kind: 'pilot' | 'vakman' | 'vraag' }
+const { kind } = Astro.props;
+const roles = {
+  pilot: ['Directie', 'Docent of leerkracht', 'Intern begeleider', 'ICT-coördinator of privacyfunctionaris', 'Anders'],
+  vakman: ['Gebarentaaldocent', 'Tolk NGT', 'Dove of slechthorende gebaarder', 'Anders'],
+  vraag: [],
+}[kind];
+const submit = { pilot: 'Pilot aanvragen', vakman: 'Aanmelden', vraag: 'Versturen' }[kind];
+---
+<form class="request" method="post" action="/api/aanvraag">
+  <input type="hidden" name="soort" value={kind} />
+  <div class="hp" aria-hidden="true">
+    <label for="website">Laat dit veld leeg</label>
+    <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="naam">Je naam</label>
+      <input id="naam" name="naam" type="text" autocomplete="name" required maxlength="100" />
+    </div>
+    <div class="field">
+      <label for="email">E-mailadres</label>
+      <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" />
+    </div>
+  </div>
+
+  {roles.length > 0 && (
+    <div class="field">
+      <label for="functie">{kind === 'pilot' ? 'Je functie' : 'Ik ben'}</label>
+      <select id="functie" name="functie" required>
+        <option value="">Kies…</option>
+        {roles.map((r) => <option>{r}</option>)}
+      </select>
+    </div>
+  )}
+
+  {kind === 'pilot' && (
+    <>
+      <div class="field">
+        <label for="school">Naam en plaats van de school</label>
+        <input id="school" name="school" type="text" autocomplete="organization" required maxlength="150" />
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="klassen">Aantal klassen <span class="opt">(optioneel)</span></label>
+          <input id="klassen" name="klassen" type="number" inputmode="numeric" min="1" max="50" />
+        </div>
+        <div class="field">
+          <label for="groep">Groep of leerjaar <span class="opt">(optioneel)</span></label>
+          <input id="groep" name="groep" type="text" maxlength="100" />
+        </div>
+      </div>
+    </>
+  )}
+
+  <div class="field">
+    <label for="bericht">{kind === 'vraag' ? 'Je vraag' : <>Vraag of opmerking <span class="opt">(optioneel)</span></>}</label>
+    <textarea id="bericht" name="bericht" rows="5" maxlength="2000" required={kind === 'vraag'}></textarea>
+  </div>
+
+  <p class="caption">We gebruiken je gegevens alleen om contact met je op te nemen en bewaren ze maximaal 12 maanden. Lees meer op de pagina <a href="/privacy/">Privacy</a>.</p>
+  <p><button class="btn btn-primary" type="submit">{submit}</button></p>
+</form>
+
+<style>
+  .request { display: flex; flex-direction: column; gap: 20px; }
+  .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: end; }
+  @media (max-width: 640px) { .row { grid-template-columns: minmax(0, 1fr); } }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  label { font-weight: 700; }
+  .opt { font-weight: 400; color: var(--ink-muted); }
+  input, select, textarea {
+    font: inherit; font-size: 17px; color: var(--ink); background: var(--ground);
+    border: 2px solid var(--outline); width: 100%;
+  }
+  input, select { min-height: 52px; padding: 0 20px; border-radius: var(--radius-pill); }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 26px) 50%, calc(100% - 20px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 48px; }
+  textarea { padding: 14px 20px; border-radius: var(--radius-lg); resize: vertical; min-height: 140px; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+</style>

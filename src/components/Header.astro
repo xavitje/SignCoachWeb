@@ -1,12 +1,11 @@
 ---
 interface Props { current?: string }
 const { current } = Astro.props;
-// Pagina's die nog niet bestaan linken voorlopig naar het deel op de homepage.
 const links = [
-  { id: 'scholen', href: '/#prijs', label: 'Voor scholen' },
+  { id: 'scholen', href: '/voor-scholen/', label: 'Voor scholen' },
   { id: 'privacy', href: '/privacy/', label: 'Privacy' },
-  { id: 'docenten', href: '/#docenten', label: 'Voor docenten' },
-  { id: 'over', href: '/#gebaren', label: 'Over' },
+  { id: 'docenten', href: '/voor-docenten/', label: 'Voor docenten' },
+  { id: 'over', href: '/over/', label: 'Over' },
 ];
 ---
 <header class="wrap site-header">
@@ -17,7 +16,7 @@ const links = [
         <li><a href={l.href} aria-current={current === l.id ? 'page' : undefined}>{l.label}</a></li>
       ))}
     </ul>
-    <a class="btn btn-primary btn-small" href="/#pilot">Pilot aanvragen</a>
+    <a class="btn btn-primary btn-small" href="/pilot-aanvragen/">Pilot aanvragen</a>
   </nav>
 </header>
 

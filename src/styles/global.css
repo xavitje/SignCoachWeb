@@ -126,3 +126,7 @@ p { margin: 0; }
   border-radius: var(--radius-pill);
   font-family: var(--font-display); font-weight: 800; line-height: 1;
 }
+
+/* Coral-tekst haalt op lila (surface-raised) net geen 4.5:1; links daar in ink. */
+.field-raised a:not(.btn) { color: var(--ink); text-decoration-thickness: 2px; }
+.field-raised a:not(.btn):hover { color: var(--coral-text); }
