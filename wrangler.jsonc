@@ -1,0 +1,12 @@
+// Cloudflare Workers: publiceert de gebouwde site (dist/) als statische bestanden.
+// Build command: npm run build · Deploy command: npx wrangler deploy · Root directory: leeg laten.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "signcoachweb",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

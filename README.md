@@ -22,16 +22,16 @@ npm run build    # bouwt naar dist/
 | `public/handen/` | De 26 handvormen van het vingeralfabet (WebP). |
 | `public/_headers` | Beveiligingsheaders voor Cloudflare Pages, waaronder een Content-Security-Policy zonder inline scripts. |
 
-## Cloudflare Pages
+## Cloudflare
 
-Koppel de repository in Cloudflare (Workers & Pages › Create › Pages › Connect to Git) met:
+De site draait als Cloudflare Worker met statische bestanden (`wrangler.jsonc`). Instellingen in Workers & Pages › signcoachweb › Settings › Builds:
 
-- Framework preset: **Astro**
 - Build command: `npm run build`
-- Build output directory: `dist`
-- Environment variables: `NODE_VERSION` = `22`, en zodra het domein er is `SITE_URL` = `https://signcoach.nl`
+- Deploy command: `npx wrangler deploy`
+- Root directory: **leeg laten** (de code staat bovenaan de repository)
+- Variables: `NODE_VERSION` = `22`, en zodra het domein er is `SITE_URL` = `https://signcoach.nl`
 
-Elke push naar `main` gaat live; elke andere branch krijgt een eigen preview-link.
+Elke push naar `main` gaat live. `public/_headers` zet de beveiligingsheaders, ook op Workers.
 
 ## Afspraken
 
