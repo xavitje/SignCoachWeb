@@ -1,0 +1,430 @@
+{
+  "name": "SignCoach",
+  "version": 1,
+  "color": {
+    "themes": [
+      {
+        "id": "light",
+        "name": "Licht"
+      },
+      {
+        "id": "dark",
+        "name": "Donker"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "ground",
+        "value": {
+          "light": "#FFFFFF",
+          "dark": "#1B1533"
+        },
+        "usage": "Paginagrond. Licht = wit (website, print), donker = PlumDeep (de app en de camera)."
+      },
+      {
+        "name": "surface",
+        "value": {
+          "light": "#F6F3FB",
+          "dark": "#2D2350"
+        },
+        "usage": "Eén stap in toon van ground: vlakken, kaarten, invoervelden. Licht = een vleug plum op wit."
+      },
+      {
+        "name": "surface-raised",
+        "value": {
+          "light": "#EDE7F7",
+          "dark": "#3D3168"
+        },
+        "usage": "Tweede toonstap: chips, pillen, geselecteerde rijen, het grotere lila kleurveld op de website. Licht = PlumMist, donker = Indigo600."
+      },
+      {
+        "name": "line",
+        "value": {
+          "light": "#EEE3F3",
+          "dark": "#4A3B72"
+        },
+        "usage": "Haarlijnen en kaartranden. Decoratief, draagt geen betekenis."
+      },
+      {
+        "name": "outline",
+        "value": {
+          "light": "#7A6CA3",
+          "dark": "#8E80B5"
+        },
+        "usage": "Randen van invoervelden en secundaire knoppen. Minstens 3:1 op ground en surface in beide thema's."
+      },
+      {
+        "name": "ink",
+        "value": {
+          "light": "#241B3A",
+          "dark": "#FFF8F0"
+        },
+        "usage": "Hoofdtekst en koppen op ground, surface en surface-raised."
+      },
+      {
+        "name": "ink-muted",
+        "value": {
+          "light": "#6C6383",
+          "dark": "#B6AAD4"
+        },
+        "usage": "Secundaire tekst, bijschriften, metadata op ground, surface en surface-raised (minstens 4.6:1)."
+      },
+      {
+        "name": "night",
+        "value": {
+          "light": "#2D2350",
+          "dark": "#4A3B72"
+        },
+        "usage": "Diep merkvlak: banners, unit-kaart, de camera-omlijsting op lichte pagina's. Tekst erop: ink-on-night. In donker een stap lichter zodat het loskomt van ground."
+      },
+      {
+        "name": "night-deep",
+        "value": {
+          "light": "#1B1533",
+          "dark": "#1B1533"
+        },
+        "usage": "PlumDeep: telefoonranden in mockups, de donkerste vlakken, tekst op coral, gold en clover."
+      },
+      {
+        "name": "ink-on-night",
+        "value": {
+          "light": "#FFF8F0",
+          "dark": "#FFF8F0"
+        },
+        "usage": "Tekst op night en night-deep."
+      },
+      {
+        "name": "coral",
+        "value": {
+          "light": "#FF6B4A",
+          "dark": "#FF6B4A"
+        },
+        "usage": "Merkkleur. Primaire knop, de les die nu aan de beurt is, merkvlakken. Alleen als vulling: tekst erop altijd on-accent, nooit wit."
+      },
+      {
+        "name": "coral-deep",
+        "value": {
+          "light": "#E4502F",
+          "dark": "#E4502F"
+        },
+        "usage": "Ingedrukte en hover-staat van coral-vlakken. Tekst erop: on-accent."
+      },
+      {
+        "name": "coral-text",
+        "value": {
+          "light": "#C23E1F",
+          "dark": "#FF6B4A"
+        },
+        "usage": "Coral als tekst of lijn: links, labels boven koppen, focusring. Op ground en surface (licht 5.0:1, donker 6.2:1)."
+      },
+      {
+        "name": "coral-soft",
+        "value": {
+          "light": "#FFE8DC",
+          "dark": "#3A2A34"
+        },
+        "usage": "Zachte coral-tint achter illustraties en highlights. Tekst erop: ink."
+      },
+      {
+        "name": "clover",
+        "value": {
+          "light": "#2FB673",
+          "dark": "#2FB673"
+        },
+        "usage": "Gelukt: gehaalde lessen, het vinkje, voortgangsbalk. Alleen als vulling; tekst erop: on-accent."
+      },
+      {
+        "name": "clover-text",
+        "value": {
+          "light": "#1B7A4A",
+          "dark": "#6FE0A0"
+        },
+        "usage": "Gelukt als tekst ('Gehaald', '+15 XP') op ground en surface."
+      },
+      {
+        "name": "clover-soft",
+        "value": {
+          "light": "#DFF5E9",
+          "dark": "#1B3A2D"
+        },
+        "usage": "Achtergrond van succes-meldingen en het privacy-blok. Tekst erop: ink."
+      },
+      {
+        "name": "gold",
+        "value": {
+          "light": "#FFB627",
+          "dark": "#FFB627"
+        },
+        "usage": "Beloning en aandacht: XP, reeks, START-label, klascode op night. Vulling met on-accent, of als tekst op night/night-deep."
+      },
+      {
+        "name": "gold-text",
+        "value": {
+          "light": "#8A5A00",
+          "dark": "#FFB627"
+        },
+        "usage": "Gold als tekst op ground en surface (licht 5.6:1)."
+      },
+      {
+        "name": "gold-soft",
+        "value": {
+          "light": "#FFF1D6",
+          "dark": "#3A2E13"
+        },
+        "usage": "Achtergrond van tips en 'zonder camera'-blokken. Tekst erop: ink."
+      },
+      {
+        "name": "on-accent",
+        "value": {
+          "light": "#1B1533",
+          "dark": "#1B1533"
+        },
+        "usage": "Tekst en iconen op coral, coral-deep, gold en clover (6.2:1 op coral, 10:1 op gold)."
+      },
+      {
+        "name": "locked",
+        "value": {
+          "light": "#CFC5E3",
+          "dark": "#3D3168"
+        },
+        "usage": "Les op slot (leerpad). Letter erop: locked-ink."
+      },
+      {
+        "name": "locked-ink",
+        "value": {
+          "light": "#2D2350",
+          "dark": "#9B8BC4"
+        },
+        "usage": "Letter of slotje op locked (grote letter, 3.7:1 en hoger)."
+      },
+      {
+        "name": "focus",
+        "value": {
+          "light": "{coral-text}",
+          "dark": "{coral-text}"
+        },
+        "usage": "Focusring: 2px massief, 2px afstand, op alles wat je kunt bedienen."
+      },
+      {
+        "name": "selection",
+        "value": {
+          "light": "{coral-soft}",
+          "dark": "{coral-soft}"
+        },
+        "usage": "Achtergrond van geselecteerde tekst (::selection), met tekst in ink."
+      }
+    ]
+  },
+  "type": {
+    "fonts": [],
+    "families": {
+      "display": "\"Baloo 2\", \"Arial Rounded MT Bold\", system-ui, sans-serif",
+      "sans": "\"Plus Jakarta Sans\", \"Segoe UI\", system-ui, sans-serif",
+      "mono": "ui-monospace, \"SF Mono\", Menlo, Consolas, monospace"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "display",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "96px",
+            "lineHeight": "0.95",
+            "fontWeight": 800,
+            "letterSpacing": "-0.03em",
+            "sample": "Gebaar voor gebaar",
+            "usage": "Eén keer per pagina: de titel van de website-hero. Op mobiel 52px."
+          },
+          {
+            "name": "display-lg",
+            "fontSize": "56px",
+            "lineHeight": "1",
+            "fontWeight": 800,
+            "sample": "Je klas klaarzetten",
+            "usage": "Sectietitels op de website; paginatitels in print.",
+            "letterSpacing": "-0.02em"
+          },
+          {
+            "name": "title",
+            "fontSize": "30px",
+            "lineHeight": "1.15",
+            "fontWeight": 700,
+            "sample": "Zo werkt het",
+            "usage": "Koppen binnen een sectie; titels in de app."
+          },
+          {
+            "name": "heading",
+            "fontSize": "22px",
+            "lineHeight": "1.25",
+            "fontWeight": 700,
+            "sample": "Je hebt het gehaald!",
+            "usage": "Kaartkoppen, dialoogtitels, succesmomenten."
+          },
+          {
+            "name": "node-letter",
+            "fontSize": "32px",
+            "lineHeight": "1",
+            "fontWeight": 800,
+            "sample": "A B C",
+            "usage": "Letters en cijfers op de lesrondjes van het leerpad."
+          }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body-lg",
+            "fontSize": "18px",
+            "lineHeight": "1.55",
+            "fontWeight": 400,
+            "sample": "Leerlingen leren Nederlandse Gebarentaal met een app die meekijkt via de camera.",
+            "usage": "Intro's en lead-teksten."
+          },
+          {
+            "name": "body",
+            "fontSize": "16px",
+            "lineHeight": "1.55",
+            "fontWeight": 400,
+            "sample": "Doe het gebaar een paar keer na, net als in de video.",
+            "usage": "Lopende tekst."
+          },
+          {
+            "name": "body-strong",
+            "fontSize": "16px",
+            "lineHeight": "1.5",
+            "fontWeight": 700,
+            "sample": "Klas aanmaken",
+            "usage": "Knoppen, korte koppen in lijsten."
+          },
+          {
+            "name": "caption",
+            "fontSize": "13px",
+            "lineHeight": "1.45",
+            "fontWeight": 500,
+            "sample": "Laatst geoefend: 24 oktober",
+            "usage": "Bijschriften en metadata, in ink-muted."
+          }
+        ]
+      },
+      {
+        "name": "Codes",
+        "family": "mono",
+        "styles": [
+          {
+            "name": "code",
+            "fontSize": "28px",
+            "lineHeight": "1.1",
+            "fontWeight": 700,
+            "letterSpacing": "0.2em",
+            "sample": "K7B4QX",
+            "usage": "Alleen klascodes en pincodes, die iemand moet overtypen (0/O en 1/I uit elkaar houden). Nergens anders monospace: geen labels, geen bijschriften."
+          }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "tokens": [
+      {
+        "name": "space-1",
+        "value": "4px",
+        "usage": "Tussen icoon en label."
+      },
+      {
+        "name": "space-2",
+        "value": "8px",
+        "usage": "Tussen chips en kleine elementen."
+      },
+      {
+        "name": "space-3",
+        "value": "12px",
+        "usage": "Tussen rijen in een lijst."
+      },
+      {
+        "name": "space-4",
+        "value": "16px",
+        "usage": "Kaart-padding op mobiel, gap tussen kaarten."
+      },
+      {
+        "name": "space-5",
+        "value": "24px",
+        "usage": "Kaart-padding op desktop."
+      },
+      {
+        "name": "space-6",
+        "value": "32px",
+        "usage": "Tussen blokken binnen een sectie."
+      },
+      {
+        "name": "space-7",
+        "value": "48px",
+        "usage": "Tussen secties op mobiel."
+      },
+      {
+        "name": "space-8",
+        "value": "64px",
+        "usage": "Tussen secties op desktop."
+      },
+      {
+        "name": "space-9",
+        "value": "96px",
+        "usage": "Boven en onder de hero."
+      }
+    ]
+  },
+  "radius": {
+    "tokens": [
+      {
+        "name": "radius-sm",
+        "value": "8px",
+        "usage": "Code-hokjes en kleine tags."
+      },
+      {
+        "name": "radius-lg",
+        "value": "20px",
+        "usage": "Kaarten en dialogen in de app."
+      },
+      {
+        "name": "radius-xl",
+        "value": "32px",
+        "usage": "Grote vlakken op de website: kleurvelden, beeld, telefoon-mockups."
+      },
+      {
+        "name": "radius-pill",
+        "value": "999px",
+        "usage": "Alles wat je aantikt: knoppen, invoervelden, chips, pillen. Plus lesrondjes en voortgangsbalken."
+      }
+    ]
+  },
+  "shadow": {
+    "tokens": [
+      {
+        "name": "shadow-sm",
+        "value": {
+          "light": "0 3px 8px -3px rgba(45,35,80,0.22)",
+          "dark": "0 3px 8px -3px rgba(0,0,0,0.5)"
+        },
+        "usage": "Alleen wat echt zweeft: een menu, een toast."
+      },
+      {
+        "name": "shadow-md",
+        "value": {
+          "light": "0 10px 22px -8px rgba(45,35,80,0.28)",
+          "dark": "0 10px 22px -8px rgba(0,0,0,0.55)"
+        },
+        "usage": "Dialogen en sheets. Nooit op kaarten die stil liggen."
+      },
+      {
+        "name": "shadow-lg",
+        "value": {
+          "light": "0 22px 42px -14px rgba(45,35,80,0.34)",
+          "dark": "0 22px 42px -14px rgba(0,0,0,0.6)"
+        },
+        "usage": "Telefoon- en tablet-mockups op de website."
+      }
+    ]
+  }
+}

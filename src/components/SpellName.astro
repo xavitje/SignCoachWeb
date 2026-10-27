@@ -1,0 +1,84 @@
+---
+// "Spel je naam": typ een naam en zie elke letter als handvorm uit het NGT-vingeralfabet.
+// Zonder JavaScript staat er het voorbeeld HOI.
+const example = 'HOI';
+---
+<div class="spell panel field-surface" data-spell>
+  <label class="title" for="naam">Spel je naam in gebarentaal</label>
+  <input id="naam" type="text" inputmode="text" autocomplete="off" autocapitalize="words" spellcheck="false" maxlength="12" placeholder="Typ je voornaam" />
+  <ul class="letters" aria-live="polite" aria-label="Je naam in handvormen" data-letters>
+    {example.split('').map((ch) => (
+      <li>
+        <span class="hand"><img src={`/handen/${ch.toLowerCase()}.webp`} alt={`Handvorm voor de letter ${ch}`} width="96" height="96" /></span>
+        <span class="node letter" aria-hidden="true">{ch}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="caption-line" data-caption>Zo zeg je HOI in het vingeralfabet. Typ je naam en zie hoe je die spelt.</p>
+</div>
+
+<style is:global>
+  .spell { display: flex; flex-direction: column; gap: 20px; }
+  .spell label { display: block; }
+  .spell input {
+    min-height: 56px; padding: 0 24px; border-radius: var(--radius-pill);
+    border: 2px solid var(--outline); background: var(--ground);
+    font: inherit; font-size: 18px; color: var(--ink); width: 100%;
+  }
+  .spell input::placeholder { color: var(--ink-muted); }
+  .spell .letters {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 12px; min-height: 150px; align-items: flex-start;
+  }
+  .spell .letters li { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 88px; }
+  .spell .hand {
+    width: 88px; height: 88px; border-radius: var(--radius-pill); background: var(--ground);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .spell .hand img { width: 76px; height: 76px; object-fit: contain; }
+  .spell .letter { width: 40px; height: 40px; background: var(--surface-raised); font-size: 22px; color: var(--ink); }
+  .spell .caption-line { font-size: 15px; color: var(--ink-muted); }
+  @media (max-width: 480px) {
+    .spell .letters li { width: 64px; }
+    .spell .hand { width: 64px; height: 64px; }
+    .spell .hand img { width: 56px; height: 56px; }
+    .spell .letters { min-height: 112px; gap: 8px; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-spell]');
+  if (root) {
+    const input = root.querySelector('input')!;
+    const list = root.querySelector('[data-letters]')!;
+    const caption = root.querySelector('[data-caption]')!;
+    const defaultCaption = caption.textContent;
+
+    const render = () => {
+      const clean = input.value
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 12);
+      const shown = clean || 'HOI';
+      list.replaceChildren(...shown.split('').map((ch) => {
+        const li = document.createElement('li');
+        const hand = document.createElement('span');
+        hand.className = 'hand';
+        const img = document.createElement('img');
+        img.src = `/handen/${ch.toLowerCase()}.webp`;
+        img.alt = `Handvorm voor de letter ${ch}`;
+        img.width = 96; img.height = 96;
+        hand.append(img);
+        const letter = document.createElement('span');
+        letter.className = 'node letter';
+        letter.setAttribute('aria-hidden', 'true');
+        letter.textContent = ch;
+        li.append(hand, letter);
+        return li;
+      }));
+      caption.textContent = clean
+        ? `Zo spel je ${clean[0]}${clean.slice(1).toLowerCase()} met je handen. Het vingeralfabet is de eerste unit in SignCoach.`
+        : defaultCaption;
+    };
+    input.addEventListener('input', render);
+  }
+</script>

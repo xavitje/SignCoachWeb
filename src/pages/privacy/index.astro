@@ -1,0 +1,213 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const docs = (await getCollection('documenten')).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(docs.map(async (d) => ({ doc: d, Content: (await render(d)).Content })));
+const first = 'privacybijsluiter';
+---
+<Base
+  title="Privacy bij SignCoach: wat we bewaren en wat niet"
+  description="Camerabeelden blijven op het apparaat. Van leerlingen bewaart SignCoach alleen voornaam, klas en voortgang. Lees de verwerkersovereenkomst, privacybijsluiter, beveiligingsbijlage en DPIA-opzet."
+  current="privacy"
+>
+  <section class="wrap intro stack-lg">
+    <h1 class="display-xl">Wat we bewaren en wat niet</h1>
+    <p class="lead measure">Voor de ICT-coördinator, de privacyfunctionaris en ouders. De school is verwerkingsverantwoordelijke, SignCoach is verwerker. Alle documenten staan onderaan deze pagina.</p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: clamp(48px, 7vw, 96px);">
+    <div class="two">
+      <div class="panel field-clover stack">
+        <h2 class="title">Van leerlingen bewaren we</h2>
+        <ul class="plain">
+          <li>Een voornaam of bijnaam, ingevoerd door de docent</li>
+          <li>De klas en de school</li>
+          <li>Een pincode van 4 cijfers, die alleen de eigen docent kan zien</li>
+          <li>De voortgang: welke gebaren gehaald zijn, met datum en score</li>
+          <li>Op welke dagen er geoefend is</li>
+          <li>Of de camera voor deze leerling aan of uit staat</li>
+        </ul>
+      </div>
+      <div class="panel field-surface stack">
+        <h2 class="title">We bewaren nooit</h2>
+        <ul class="plain">
+          <li>Camerabeelden, foto's, video of geluid</li>
+          <li>Een achternaam, geboortedatum of e-mailadres van leerlingen</li>
+          <li>Gegevens voor reclame of profilering. We verkopen niets door.</li>
+        </ul>
+        <p>Leerlingen krijgen geen pushmeldingen en er is geen ranglijst tussen leerlingen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section field-night night">
+    <div class="wrap two" style="gap: clamp(32px, 5vw, 72px);">
+      <div class="stack">
+        <h2 class="display-lg">De camera</h2>
+        <p class="lead">De camera staat alleen aan tijdens het oefenen. De herkenning draait volledig op het apparaat. Er gaat geen beeld, video of handpositie naar een server en er wordt niets opgeslagen. Alleen het resultaat, gebaar gehaald met de score, gaat naar de server.</p>
+        <p class="lead">Wil een ouder of de school geen camera? Dan zet de docent de camera voor die leerling uit. De leerling doet elke les dan met een zelfcheck.</p>
+      </div>
+      <div class="stack">
+        <h2 class="display-lg">Hoe lang</h2>
+        <ul class="terms">
+          <li><strong>Leerlingen en voortgang:</strong> tot de docent de leerling verwijdert, uiterlijk 90 dagen na het einde van de licentie.</li>
+          <li><strong>Crashrapporten:</strong> anoniem, 12 maanden.</li>
+          <li><strong>Schoolgegevens voor de factuur:</strong> 7 jaar, verplicht voor de belasting.</li>
+          <li><strong>Waar:</strong> servers in de EU, in Frankfurt.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="documenten" class="section wrap stack-lg" style="gap: 32px;">
+    <div class="stack measure">
+      <h2 class="display-lg">De documenten</h2>
+      <p class="lead">De verwerkersovereenkomst volgt het model 4.0 van het Convenant Digitale Onderwijsmiddelen en Privacy. De bijlagen en de DPIA-opzet zijn voor SignCoach geschreven.</p>
+      {docs.some((d) => d.data.status === 'concept') && (
+        <p class="notice"><strong>Concept.</strong> Deze versies worden nog gecontroleerd door een jurist.</p>
+      )}
+    </div>
+
+    <div class="reader" data-reader>
+      <div class="tabs" role="tablist" aria-label="Documenten" hidden data-tabs>
+        {docs.map((d) => (
+          <button class="tab" role="tab" id={`tab-${d.id}`} aria-controls={`doc-${d.id}`} aria-selected={d.id === first ? 'true' : 'false'} tabindex={d.id === first ? 0 : -1} data-tab={d.id}>
+            <span class="tab-title">{d.data.title}</span>
+            <span class="tab-sub">{d.data.sub}</span>
+          </button>
+        ))}
+      </div>
+      <div class="desk">
+        {rendered.map(({ doc, Content }) => (
+          <article class="paper" id={`doc-${doc.id}`} role="tabpanel" aria-labelledby={`tab-${doc.id}`} data-panel={doc.id}>
+            <p class="paper-meta"><span>SignCoach · {doc.data.sub}</span><span>{doc.data.status === 'concept' ? 'Concept, ' : ''}{doc.data.datum}</span></p>
+            <h3 class="title">{doc.data.title}</h3>
+            <p class="paper-lead">{doc.data.lead}</p>
+            <div class="prose"><Content /></div>
+            <p class="paper-actions" hidden data-print-wrap>
+              <button class="btn btn-secondary btn-small" type="button" data-print>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+                Opslaan als PDF of afdrukken
+              </button>
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+    <p class="measure">Vragen over privacy, of een verzoek om inzage of verwijdering? Dat loopt via de school. De docent kan een leerling en alle gegevens zelf direct verwijderen in de app.</p>
+  </section>
+</Base>
+
+<style>
+  .intro { padding-top: clamp(32px, 5vw, 72px); padding-bottom: 48px; }
+  .intro h1 { max-width: 12em; }
+  .plain { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+  .terms { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 17px; }
+  .notice { padding: 12px 18px; border-radius: var(--radius-lg); background: var(--gold-soft); font-size: 15px; }
+
+  .reader { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; }
+  .tabs { flex: 1 1 260px; max-width: 340px; display: flex; flex-direction: column; gap: 8px; }
+  .tabs[hidden] { display: none; }
+  .tab {
+    width: 100%; min-height: 64px; text-align: left; border: 0; border-radius: var(--radius-lg);
+    padding: 12px 18px; font: inherit; color: var(--ink); cursor: pointer; background: var(--surface);
+    transition: background-color 150ms ease;
+  }
+  .tab[aria-selected='true'] { background: var(--surface-raised); box-shadow: inset 0 0 0 2px var(--outline); }
+  @media (hover: hover) and (pointer: fine) { .tab:hover { background: var(--surface-raised); } }
+  .tab-title { display: block; font-weight: 700; }
+  .tab-sub { display: block; font-size: 13px; color: var(--ink-muted); }
+
+  .desk {
+    flex: 999 1 560px; min-width: 0; background: var(--surface-raised); border-radius: var(--radius-xl);
+    padding: clamp(12px, 3vw, 40px); display: flex; flex-direction: column; gap: 32px;
+  }
+  .paper {
+    background: var(--ground); border-radius: var(--radius-sm); box-shadow: var(--shadow-md);
+    padding: clamp(20px, 4vw, 56px); width: 100%; max-width: 760px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .paper[hidden] { display: none; }
+  .paper-meta {
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    font-size: 13px; color: var(--ink-muted); border-bottom: 1px solid var(--line); padding-bottom: 12px;
+  }
+  .paper-lead { font-weight: 600; }
+  .paper-actions { margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .paper-actions[hidden] { display: none; }
+
+  .prose { display: flex; flex-direction: column; gap: 12px; font-size: 15px; }
+  .prose :global(h4) { font-size: 17px; font-weight: 700; margin-top: 12px; font-family: var(--font-sans); }
+  .prose :global(ul), .prose :global(ol) { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; }
+  .prose :global(table) { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.45; }
+  .prose :global(th) { text-align: left; font-weight: 700; padding: 8px 10px; background: var(--surface); }
+  .prose :global(td) { padding: 8px 10px; vertical-align: top; border-top: 1px solid var(--line); }
+  .prose :global(.table-scroll) { overflow-x: auto; }
+
+  @media print {
+    :global(.site-header), :global(.site-footer), :global(.skip-link) { display: none !important; }
+    :global(main > section:not(#documenten)) { display: none !important; }
+    #documenten > :not(.reader) { display: none !important; }
+    .tabs, .paper-actions { display: none !important; }
+    .desk { background: none; padding: 0; }
+    .paper { box-shadow: none; padding: 0; max-width: none; }
+    .paper:not(.printing) { display: none !important; }
+  }
+</style>
+
+<script>
+  const reader = document.querySelector<HTMLElement>('[data-reader]');
+  if (reader) {
+    const tabList = reader.querySelector<HTMLElement>('[data-tabs]')!;
+    const tabs = [...reader.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+    const panels = [...reader.querySelectorAll<HTMLElement>('[data-panel]')];
+
+    // Wide tables scroll inside their own box on a phone.
+    reader.querySelectorAll('.prose table').forEach((t) => {
+      const box = document.createElement('div');
+      box.className = 'table-scroll';
+      box.style.overflowX = 'auto';
+      box.tabIndex = 0;
+      box.setAttribute('role', 'region');
+      box.setAttribute('aria-label', 'Tabel, schuif opzij voor meer');
+      t.replaceWith(box);
+      box.append(t);
+    });
+
+    const select = (id: string, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === id;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+      });
+      panels.forEach((p) => { p.hidden = p.dataset.panel !== id; });
+    };
+
+    // Without JavaScript every document is shown below the other; with it, tabs.
+    tabList.hidden = false;
+    reader.querySelectorAll<HTMLElement>('[data-print-wrap]').forEach((el) => { el.hidden = false; });
+    const fromHash = location.hash.replace('#doc-', '');
+    select(tabs.some((t) => t.dataset.tab === fromHash) ? fromHash : tabs.find((t) => t.getAttribute('aria-selected') === 'true')!.dataset.tab!);
+
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t.dataset.tab!));
+      t.addEventListener('keydown', (e) => {
+        const next = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+        if (!next) return;
+        e.preventDefault();
+        select(tabs[(i + next + tabs.length) % tabs.length].dataset.tab!, true);
+      });
+    });
+
+    reader.querySelectorAll<HTMLButtonElement>('[data-print]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const paper = b.closest('.paper')!;
+        paper.classList.add('printing');
+        window.print();
+        paper.classList.remove('printing');
+      });
+    });
+  }
+</script>

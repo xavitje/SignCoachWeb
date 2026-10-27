@@ -1,0 +1,29 @@
+---
+const links = [
+  { href: '/#prijs', label: 'Voor scholen' },
+  { href: '/privacy/', label: 'Privacy' },
+  { href: '/#docenten', label: 'Voor docenten' },
+  { href: '/#gebaren', label: 'Voor vakmensen' },
+  { href: '/#pilot', label: 'Pilot aanvragen' },
+];
+---
+<footer class="night site-footer">
+  <div class="wrap footer-inner">
+    <nav aria-label="Voettekst">
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <svg class="big" viewBox="0 0 1000 190" aria-hidden="true" focusable="false"><text x="0" y="160" textLength="1000" lengthAdjust="spacingAndGlyphs">SignCoach</text></svg>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--night-deep); color: var(--ink-on-night); padding: 64px 0 32px; }
+  .footer-inner { display: flex; flex-direction: column; gap: 40px; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px 40px; }
+  a { color: var(--ink-on-night); text-decoration: none; font-weight: 600; padding-block: 10px; display: inline-block; }
+  a:hover { color: var(--gold); }
+  .big { display: block; width: 100%; height: auto; }
+  .big text { font-family: var(--font-display); font-weight: 800; font-size: 210px; fill: var(--night); }
+</style>

@@ -1,0 +1,202 @@
+---
+import Base from '../layouts/Base.astro';
+import SpellName from '../components/SpellName.astro';
+import LessonPhones from '../components/LessonPhones.astro';
+
+const check = 'M5 12.5l4.5 4.5L19 7.5';
+const prices = [
+  { name: 'Klein', size: 'Tot 150 leerlingen', price: '€295' },
+  { name: 'Standaard', size: '150 tot 350 leerlingen', price: '€495' },
+  { name: 'Groot', size: 'Meer dan 350 leerlingen', price: '€695' },
+];
+const privacyFacts = [
+  ['Er wordt niets opgenomen of verstuurd.', "Geen foto's, geen video, geen geluid."],
+  ['Van leerlingen bewaren we alleen voornaam, klas en voortgang.', 'Geen achternaam, geen e-mailadres, geen geboortedatum.'],
+  ['De docent kan de camera per leerling uitzetten.', 'Die leerling oefent dan met een zelfcheck.'],
+  ['Servers in de EU, in Frankfurt.', 'Verwerkersovereenkomst volgens model 4.0 van het Convenant Digitale Onderwijsmiddelen en Privacy.'],
+];
+---
+<Base
+  title="SignCoach: Nederlandse Gebarentaal leren in de klas"
+  description="Leerlingen van 9 tot 15 jaar leren Nederlandse Gebarentaal (NGT) met een app die via de camera meekijkt. Probeer het 6 tot 8 weken gratis met je klas."
+  current="home"
+>
+  <section class="wrap hero">
+    <div class="split">
+      <div class="stack-lg">
+        <h1 class="display-xl">Gebarentaal in je klas</h1>
+        <p class="lead measure">Leerlingen van 9 tot 15 jaar leren Nederlandse Gebarentaal (NGT) met een app die via de camera meekijkt. Ze zien een voorbeeld, doen het na, en de app ziet of het gebaar klopt.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#pilot">Pilot aanvragen</a>
+          <a class="btn btn-secondary" href="#les">Zo werkt een les</a>
+        </div>
+        <p class="caption">6 tot 8 weken gratis in één of twee klassen. Werkt op Android-tablets met camera.</p>
+      </div>
+      <SpellName />
+    </div>
+  </section>
+
+  <section id="les" class="section field-raised">
+    <div class="wrap stack-lg" style="gap: 48px;">
+      <div class="stack measure">
+        <h2 class="display-lg">Kijken, nadoen, gehaald</h2>
+        <p class="lead">Elke les is één gebaar. Een leerling kijkt naar het voorbeeld, doet het na voor de camera en krijgt meteen terug of het klopt. Drie keer goed, dan gaat de volgende les open.</p>
+      </div>
+      <LessonPhones />
+      <p class="center">Geen camera in de klas? Dan oefent een leerling met een zelfcheck: <em>Gelukt</em> of <em>Nog een keer kijken</em>.</p>
+    </div>
+  </section>
+
+  <section id="docenten" class="section wrap">
+    <div class="split">
+      <div class="stack-lg">
+        <h2 class="display-lg">Klaar in tien minuten</h2>
+        <p class="lead measure">Een klas klaarzetten doe je één keer en kost ongeveer tien minuten. Daarna oefenen leerlingen 15 minuten per week, op de tablets die de school al heeft.</p>
+        <ol class="steps">
+          <li>Maak een klas aan. Je krijgt een klascode.</li>
+          <li>Zet de voornamen van je leerlingen erin. Elke leerling krijgt een pincode.</li>
+          <li>Print de inlogkaartjes en deel ze uit.</li>
+          <li>Leerlingen loggen in met klascode en pincode. Geen e-mailadres nodig.</li>
+        </ol>
+        <p class="measure">In het tabblad Klas zie je wie heeft geoefend en welke letters gehaald zijn. Vergeet een leerling de pincode, dan zoek je die gewoon op.</p>
+      </div>
+      <div class="panel field-surface card-wrap">
+        <figure class="login-card">
+          <div class="card-top"><span class="card-word">SignCoach</span><span class="caption">Inlogkaartje</span></div>
+          <div class="card-field">
+            <span class="caption">Naam</span>
+            <span class="card-name">Voornaam van de leerling</span>
+          </div>
+          <div class="codes">
+            <div class="card-field"><span class="caption">Klascode</span><span class="code" style="background: var(--gold-soft);">K7B4QX</span></div>
+            <div class="card-field"><span class="caption">Pincode</span><span class="code" style="background: var(--surface-raised);">4821</span></div>
+          </div>
+          <figcaption class="caption">Voorbeeld van een inlogkaartje. De docent print ze vanuit de app.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section field-night night">
+    <div class="wrap split" style="align-items: start;">
+      <div class="stack-lg">
+        <h2 class="display-lg">Beelden blijven op de tablet</h2>
+        <p class="lead">De herkenning draait op het apparaat zelf. Alleen het resultaat, gehaald of nog niet, gaat naar de server.</p>
+        <a class="night-link" href="/privacy/">Alles over privacy en de documenten</a>
+      </div>
+      <ul class="checks">
+        {privacyFacts.map(([strong, rest]) => (
+          <li>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2FB673" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={check}></path></svg>
+            <span><strong>{strong}</strong> {rest}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="gebaren" class="section wrap stack-lg" style="gap: 40px;">
+    <div class="stack measure">
+      <h2 class="display-lg">Gemaakt met gebaarders</h2>
+      <p class="lead">Elk voorbeeld in de app is opgenomen door een gebarentaalvakman: een gebarentaaldocent, tolk of dove gebaarder. Een tweede vakman controleert het voordat leerlingen het zien.</p>
+    </div>
+    <ol class="three flow">
+      <li>
+        <span class="flow-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"></rect><path d="M16 10.5l5-3v9l-5-3"></path></svg></span>
+        <div><h3 class="heading">Een vakman neemt op</h3><p>Het gebaar wordt in de app opgenomen en komt in een wachtrij.</p></div>
+      </li>
+      <li>
+        <span class="flow-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c.6-3.4 3-5.5 6-5.5"></path><path d="M13.5 17l2.5 2.5 5-5"></path></svg></span>
+        <div><h3 class="heading">Een tweede vakman keurt</h3><p>Iemand anders dan de maker kijkt of het klopt, of stuurt het terug.</p></div>
+      </li>
+      <li>
+        <span class="flow-icon flow-done"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={check}></path></svg></span>
+        <div><h3 class="heading">Pas dan in de les</h3><p>Alleen goedgekeurde gebaren komen in de app van leerlingen.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="prijs" class="section field-gold">
+    <div class="wrap stack-lg" style="gap: 40px;">
+      <div class="stack measure">
+        <h2 class="display-lg">Eén prijs per schooljaar</h2>
+        <p class="lead">Je betaalt per school, niet per leerling of per docent.</p>
+      </div>
+      <ul class="three prices">
+        {prices.map((p) => (
+          <li class="price panel">
+            <h3 class="heading">{p.name}</h3>
+            <p class="muted">{p.size}</p>
+            <p class="amount">{p.price}</p>
+            <p class="caption">per schooljaar, op factuur</p>
+          </li>
+        ))}
+      </ul>
+      <ul class="discounts">
+        <li>15% korting als je voor drie schooljaren kiest.</li>
+        <li>20% korting voor schoolbesturen.</li>
+        <li>De eerste 20 scholen krijgen het eerste jaar 50% korting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pilot" class="section wrap">
+    <div class="split panel field-surface pilot">
+      <div class="stack-lg">
+        <h2 class="display-lg">Probeer het gratis</h2>
+        <p class="lead">Gebruik SignCoach 6 tot 8 weken gratis in één of twee klassen. Daarna beslis je of de school verdergaat.</p>
+        <!-- Het aanvraagformulier komt in stap 4; tot dan opent deze knop een e-mail. -->
+        <a class="btn btn-primary" style="align-self: flex-start;" href="mailto:rafi@rhymehelper.store?subject=Pilot%20SignCoach">Pilot aanvragen</a>
+        <p class="caption">Binnen twee werkdagen nemen we contact op.</p>
+      </div>
+      <div class="stack-lg">
+        <div class="stack" style="gap: 8px;">
+          <h3 class="heading">Wat je krijgt</h3>
+          <ul class="plain">
+            <li>De app voor jouw klassen, met alle lessen van het vingeralfabet.</li>
+            <li>De docentenhandleiding.</li>
+          </ul>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <h3 class="heading">Wat we vragen</h3>
+          <p>Korte feedback tijdens en na de pilot, via het formulier in de app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(32px, 6vw, 80px); padding-bottom: clamp(48px, 8vw, 96px); }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .center { text-align: center; }
+  .steps { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
+  .card-wrap { display: flex; justify-content: center; padding: clamp(24px, 4vw, 56px); }
+  .login-card {
+    margin: 0; width: 100%; max-width: 380px; background: var(--ground); border-radius: var(--radius-lg);
+    padding: 28px; display: flex; flex-direction: column; gap: 18px;
+    outline: 2px dashed var(--locked); outline-offset: -10px;
+  }
+  .card-top { display: flex; justify-content: space-between; align-items: center; }
+  .card-word { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1; }
+  .card-field { display: flex; flex-direction: column; gap: 6px; }
+  .card-name { font-size: 18px; font-weight: 700; color: var(--ink-muted); border-bottom: 2px dotted var(--locked); padding-bottom: 4px; }
+  .codes { display: flex; gap: 16px; flex-wrap: wrap; }
+  .night-link { color: var(--gold); font-weight: 700; }
+  .night-link:hover { color: var(--ink-on-night); }
+  .flow { list-style: none; margin: 0; padding: 0; }
+  .flow li { display: flex; gap: 16px; align-items: flex-start; }
+  .flow-icon {
+    flex-shrink: 0; width: 64px; height: 64px; border-radius: 999px;
+    background: var(--surface-raised); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .flow-done { background: var(--clover); color: var(--on-accent); }
+  .flow h3 { margin-bottom: 4px; }
+  .prices { list-style: none; margin: 0; padding: 0; }
+  .price { background: var(--ground); display: flex; flex-direction: column; gap: 8px; }
+  .amount { font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1.1; margin-top: 12px; }
+  .discounts, .plain { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+  .discounts { font-size: 17px; }
+  .pilot { padding: clamp(24px, 5vw, 64px); }
+</style>

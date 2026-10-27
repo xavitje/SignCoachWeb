@@ -1,0 +1,44 @@
+---
+interface Props { current?: string }
+const { current } = Astro.props;
+// Pagina's die nog niet bestaan linken voorlopig naar het deel op de homepage.
+const links = [
+  { id: 'scholen', href: '/#prijs', label: 'Voor scholen' },
+  { id: 'privacy', href: '/privacy/', label: 'Privacy' },
+  { id: 'docenten', href: '/#docenten', label: 'Voor docenten' },
+  { id: 'over', href: '/#gebaren', label: 'Over' },
+];
+---
+<header class="wrap site-header">
+  <a class="wordmark" href="/" aria-label="SignCoach, naar de homepage">SignCoach</a>
+  <nav aria-label="Hoofdmenu">
+    <ul class="navlinks">
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={current === l.id ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+    <a class="btn btn-primary btn-small" href="/#pilot">Pilot aanvragen</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding-block: 20px; flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: var(--font-display); font-weight: 800; font-size: 30px; line-height: 1;
+    color: var(--ink); text-decoration: none;
+  }
+  nav { display: flex; align-items: center; gap: 28px; }
+  .navlinks { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .navlinks a { color: var(--ink); text-decoration: none; font-weight: 600; padding-block: 10px; }
+  .navlinks a[aria-current='page'] { color: var(--coral-text); }
+  @media (hover: hover) and (pointer: fine) {
+    .navlinks a:hover { color: var(--coral-text); }
+  }
+  @media (max-width: 860px) {
+    nav { display: contents; }
+    .navlinks { order: 3; width: 100%; flex-wrap: wrap; gap: 0 20px; }
+  }
+</style>
