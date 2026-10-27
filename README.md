@@ -1,14 +1,6 @@
 # SignCoach website
 
-De website van SignCoach: Nederlandse Gebarentaal leren in de klas. Gebouwd met [Astro](https://astro.build) als statische site, gehost op Cloudflare Pages.
-
-## Lokaal draaien
-
-```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # bouwt naar dist/
-```
+De website van SignCoach: Nederlandse Gebarentaal leren in de klas.
 
 ## Hoe het in elkaar zit
 
