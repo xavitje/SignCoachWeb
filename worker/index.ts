@@ -35,9 +35,38 @@ export default {
       }
       return handleRequest(req, env, ctx, url);
     }
+    if (url.pathname === '/api/status') return status(env);
     return env.ASSETS.fetch(req);
   },
 };
+
+// Laat zien welke instellingen de Worker ziet (alleen ja/nee, nooit de waarden),
+// en of Supabase de functie submit_website_request kent.
+async function status(env: Env): Promise<Response> {
+  const result: Record<string, unknown> = {
+    SUPABASE_URL: !!env.SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY: !!env.SUPABASE_PUBLISHABLE_KEY,
+    NOTIFY_EMAIL: !!env.NOTIFY_EMAIL,
+    RESEND_API_KEY: !!env.RESEND_API_KEY,
+  };
+  if (env.SUPABASE_URL && env.SUPABASE_PUBLISHABLE_KEY) {
+    // Ongeldige aanvraag (soort 'test' bestaat niet): wordt nooit opgeslagen, maar laat zien of de functie bereikbaar is.
+    const res = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/submit_website_request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: env.SUPABASE_PUBLISHABLE_KEY,
+        ...(env.SUPABASE_PUBLISHABLE_KEY.startsWith('eyJ') ? { Authorization: `Bearer ${env.SUPABASE_PUBLISHABLE_KEY}` } : {}),
+      },
+      body: JSON.stringify({ p_kind: 'test', p_name: 'status', p_email: 'status@example.com', p_role: null, p_school: null, p_classes: null, p_grade: null, p_message: null }),
+    });
+    const body = await res.text();
+    result.supabase = { status: res.status, ok: res.status === 400 && body.includes('website_requests_kind_check'), message: body.slice(0, 200) };
+  }
+  return new Response(JSON.stringify(result, null, 2), {
+    headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' },
+  });
+}
 
 function redirect(url: URL, path: string): Response {
   return Response.redirect(new URL(path, url.origin).toString(), 303);
