@@ -10,3 +10,7 @@
 
 /handen/*
   Cache-Control: public, max-age=604800
+
+# Testadres: niet in zoekmachines zolang het eigen domein er nog niet is.
+https://signcoachweb.rafi-elidrissi.workers.dev/*
+  X-Robots-Tag: noindex
