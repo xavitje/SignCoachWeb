@@ -14,7 +14,7 @@ De app gebruikt de camera bij kinderen en verwerkt gegevens van een kwetsbare gr
 #### Beschrijving van de verwerking
 
 - **Doel:** leerlingen leren gebarentaal; de docent volgt de voortgang.
-- **Betrokkenen:** leerlingen (9 tot 15 jaar), docenten, schoolbeheerders.
+- **Betrokkenen:** leerlingen (minderjarigen), docenten, schoolbeheerders.
 - **Gegevens:** zie bijlage 1. Geen bijzondere persoonsgegevens; de camerabeelden worden niet opgeslagen of verstuurd.
 - **Grondslag:** te bepalen door de school.
 - **Ontvangers:** de docent van de klas, de schoolbeheerder, SignCoach als verwerker, Supabase als subverwerker.
