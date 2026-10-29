@@ -52,6 +52,6 @@ Lokaal testen: `npm run build` en dan `npx wrangler dev --var SUPABASE_PUBLISHAB
 - [ ] Een korte tekst over de maker voor de pagina *Over*, en bedrijfsgegevens (KvK) zodra die er zijn.
 - [ ] *Voorwaarden* en *Thuis leren*: pas als ze er zijn.
 - [ ] De onderbouwing bij *Waarom gebarentaal* (Voor scholen) laten nakijken.
-- [ ] Domeinnaam en `SITE_URL`.
+- [x] Domeinnaam: signcoach.nl (website) en app.signcoach.nl (web-app, `src/config.ts`).
 - [ ] Privacydocumenten na controle door de jurist. Nog niet op de site omdat ze ontbreken: KvK-nummer en contactadres van de leverancier, de bewaartermijn van de Supabase-inloglogs, de back-uptermijn, en de grondslag (die bepaalt de school).
 - [ ] Laat een vakman de 26 handvormen controleren. Volgens het handalfabet van Het Gebarenhuis wijken C, E, H, P, Q, W, X en Y af.
